@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Rock Paper Scissors
+    </title>
+</head>
+
+<body>
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+    <script>
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach((button) => {
+            button.addEventListener('click', (e) => {
+                let result = playRound(button.id, computerPlay());
+                console.log(result);
+            });
+        });
+
+            function computerPlay() {
+                let computerResult = Math.floor(Math.random() * 3);
+
+                switch (computerResult) {
+                    case 0:
+                        return 'rock';
+                        break;
+
+                    case 1:
+                        return 'paper';
+                        break;
+
+                    case 2:
+                        return 'scissors';
+                        break;
+                }
+            }
+
+
+            function playRound(playerSelection, computerSelection) {
+
+                if (computerSelection == playerSelection) {
+                    return "It's a tie!";
+                }
+
+                switch (playerSelection) {
+                    case 'rock':
+                        if (computerSelection == 'scissors') {
+                            return 'You win! Rock beats scissors!';
+                        }
+                        if (computerSelection == 'paper') {
+                            return 'You lose! Paper beats rock!';
+                        }
+                        break;
+
+                    case 'paper':
+                        if (computerSelection == 'rock') {
+                            return 'You win! Paper beats rock!';
+                        }
+                        if (computerSelection == 'scissors') {
+                            return 'You lose! Scissors beats paper!';
+                        }
+                        break;
+
+                    case 'scissors':
+                        if (computerSelection == 'rock') {
+                            return 'You lose! Rock beats scissors!';
+                        }
+                        if (computerSelection == 'paper') {
+                            return 'You win! Scissors beats paper!';
+                        }
+                        break;
+                }
+            }
+    </script>
+</body>
+
+</html>
